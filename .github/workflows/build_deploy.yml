@@ -68,10 +68,13 @@ jobs:
         export TF_LOG=DEBUG
         terraform init
 
+    - name: Debug
+      run: |
+        ls
+        
     - name: Terraform Apply
       working-directory: ./terraform
       run: |
-        ls
         terraform apply -auto-approve \
         -var "aws_region=us-east-1" \
         -var "aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
