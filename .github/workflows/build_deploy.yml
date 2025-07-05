@@ -68,10 +68,14 @@ jobs:
         export TF_LOG=DEBUG
         terraform init
 
+    - name: Unzip artifact
+      run: |
+        unzip lambda.zip
+
     - name: Debug
       run: |
         ls
-        
+
     - name: Terraform Apply
       working-directory: ./terraform
       run: |
