@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "sqs_handler" {
   function_name = "sqs-listener"
-  role          = var.lab_role_arn
+  role          = local.lab_role_arn
   runtime       = "python3.9"
   handler       = "lambda_handler.lambda_handler"
   filename      = "../lambda.zip"
