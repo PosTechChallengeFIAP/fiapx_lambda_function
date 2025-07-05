@@ -7,13 +7,13 @@ resource "aws_lambda_function" "sqs_handler" {
 
   environment {
     variables = {
-      API_GATEWAY_URL = var.api_gateway_url
+      API_GATEWAY_URL = local.api_gateway_url
     }
   }
 }
 
 resource "aws_lambda_event_source_mapping" "sqs_trigger" {
-  event_source_arn = var.sqs_queue_arn
+  event_source_arn = local.sqs_queue_arn
   function_name    = aws_lambda_function.sqs_handler.arn
   batch_size       = 1
   enabled          = true
