@@ -18,3 +18,8 @@ variable "aws_session_token" {
   description = "AWS Session Token"
   type        = string
 }
+
+variable "api_gateway_url" {
+  description = "API Gateway Url"
+  type        = string
+}
