@@ -68,15 +68,6 @@ jobs:
         export TF_LOG=DEBUG
         terraform init
 
-    - name: Unzip artifact
-      working-directory: ./lambda.zip
-      run: |
-        unzip lambda.zip
-
-    - name: Debug
-      run: |
-        ls
-
     - name: Terraform Apply
       working-directory: ./terraform
       run: |
@@ -84,4 +75,5 @@ jobs:
         -var "aws_region=us-east-1" \
         -var "aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
         -var "aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
-        -var "aws_session_token=${{ secrets.AWS_SESSION_TOKEN }}" 
+        -var "aws_session_token=${{ secrets.AWS_SESSION_TOKEN }}" \
+        -var "lambda_src_file=../lambda.zip/lambda.zip"

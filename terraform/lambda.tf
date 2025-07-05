@@ -3,7 +3,7 @@ resource "aws_lambda_function" "sqs_handler" {
   role          = local.lab_role_arn
   runtime       = "python3.9"
   handler       = "lambda_handler.lambda_handler"
-  filename      = "../lambda.zip"
+  filename      = var.lambda_src_file
 
   environment {
     variables = {

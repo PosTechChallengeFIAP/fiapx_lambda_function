@@ -18,3 +18,8 @@ variable "aws_session_token" {
   description = "AWS Session Token"
   type        = string
 }
+
+variable "lambda_src_file" {
+  description = "Lambda Function Source File"
+  type        = string
+}
