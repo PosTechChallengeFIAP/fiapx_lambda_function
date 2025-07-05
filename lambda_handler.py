@@ -9,6 +9,6 @@ def lambda_handler(event, context):
         message = json.loads(record['body'])
         response = requests.post(
             api_url + "/process/" + message.id,
-            headers={"Authorization": message.token}  # Optional
+            headers={"Authorization": "Bearer " + message.token}  # Optional
         )
         print("POST status:", response.status_code)
