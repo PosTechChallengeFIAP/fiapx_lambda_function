@@ -22,6 +22,6 @@ data "aws_iam_role" "default" {
 
 locals {
   sqs_queue_arn         = data.terraform_remote_state.sqs_infra.outputs.sqs_queue_arn
-  api_gateway_url       = data.terraform_remote_state.api_infra.outputs.api_gateway_url
+  api_gateway_url       = data.terraform_remote_state.api_infra.outputs.video_processor_api_gateway_url
   lab_role_arn          = data.aws_iam_role.default.arn
 }

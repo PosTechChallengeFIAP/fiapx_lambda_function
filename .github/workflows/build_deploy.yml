@@ -77,3 +77,15 @@ jobs:
         -var "aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
         -var "aws_session_token=${{ secrets.AWS_SESSION_TOKEN }}" \
         -var "lambda_src_file=../lambda.zip/lambda.zip"
+
+  trigger-tests:
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call helm repo workflow
+        run: |
+          curl -X POST https://api.github.com/repos/PosTechChallengeFIAP/fiapx-integration-helm-chart/dispatches \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: token ${{ secrets.HELM_REPO_TOKEN }}" \
+          -d '{"event_type": "trigger-newman-tests"}'
