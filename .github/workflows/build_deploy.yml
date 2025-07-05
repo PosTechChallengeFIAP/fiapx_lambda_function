@@ -69,6 +69,7 @@ jobs:
         terraform init
 
     - name: Unzip artifact
+      working-directory: ./lambda.zip
       run: |
         unzip lambda.zip
 
